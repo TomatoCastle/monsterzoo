@@ -48,21 +48,20 @@ public class MonsterZoo {
 				this.fruits.decrement();
 				r = r * 2;
 			}
-			if(this.cachMonster(m,r)) break;
+			if(this.cachMonster(this.mondex.get(m),r)) break;
 		}
 	}
 
-	public Boolean cachMonster(int monsterNumber,int rate ){
-		System.out.println(this.mondex.get(monsterNumber).monsterName+"にボールを投げた");
+	public Boolean cachMonster(Monster monster,int rate ){
+		System.out.println(monster.monsterName+"にボールを投げた");
 		this.balls.decrement();
-		if(this.mondex.get(monsterNumber).monsterRate<=rate){//monsterRare[m]の値がr以下の場合
-			System.out.println(this.mondex.get(monsterNumber).monsterName+"を捕まえた！");
-			this.userGetedMonster.add(this.mondex.get(monsterNumber));
+		if(monster.monsterRate<=rate){//monsterRare[m]の値がr以下の場合
+			System.out.println(monster.monsterName+"を捕まえた！");
+			this.userGetedMonster.add(monster);
 			return true;//ボール投げ終了
 		}else{
-			System.out.println(this.mondex.get(monsterNumber).monsterName+"に逃げられた！");
+			System.out.println(monster.monsterName+"に逃げられた！");
 			return false;
-		}
-		
+		}		
 	}
 }
